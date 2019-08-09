@@ -4,10 +4,15 @@
       <h1>Get the Latest tech news</h1>
     </section>
     <section class="featured-posts">
-      <PostPreview :is-admin="isAdmin" id="1" thumbnial="link" title="hello" previewText="sth" />
-      <PostPreview :is-admin="isAdmin" id="2" thumbnial="link" title="helld" previewText="sth2" />
-      <PostPreview :is-admin="isAdmin" id="3" thumbnial="link" title="he" previewText="sth3" />
-      <PostPreview :is-admin="isAdmin" id="4" thumbnial="link" title="hell" previewText="sth4" />
+      <PostPreview
+        v-for="post in posts"
+        :key="post.id"
+        :id="post.id"
+        :is-admin="isAdmin"
+        :thumbnail="post.thumbnail"
+        :title="post.title"
+        :previewText="post.previewText"
+      />
     </section>
   </div>
 </template>
@@ -22,6 +27,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 };
