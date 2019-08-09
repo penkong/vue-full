@@ -17,7 +17,10 @@ export default {
   methods: {
     onSumbittd(postData) {
       axios
-        .post("firebase url/posts.json", postData)
+        .post("firebase url/posts.json", {
+          ...postData,
+          updatedDate: new Date()
+        })
         .then(res => console.log(res))
         .catch(e => console.log(e));
     }

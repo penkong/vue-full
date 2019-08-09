@@ -15,23 +15,18 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: [
-          {
-            id: "3",
-            title: context.params.id,
-            previewText: "this is first",
-            author: "m,lk",
-            updatedDate: new Date(),
-            content: "dummy text",
-            thumbnail: "http://www.google.com"
-          }
-        ]
-      });
-    }, 1000);
+  asyncData(context) {
+    axios
+      .get("firebase url" + contex.params.id + ".json")
+      .then(res => {
+        // async data that will merge with our data
+        return {
+          loadedPost: res.data
+        };
+      })
+      .catch(e => context.error(e));
   }
 };
 </script>

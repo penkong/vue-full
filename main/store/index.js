@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import axios from 'axios';
 
 // it must be callable by nuxt then we use func form
 const createStore = () => {
@@ -20,27 +21,34 @@ const createStore = () => {
           //   // if we had already fill up store.
           //   return null;
           // }
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            // its created before there is a 'this'
-            vueContext.commit('setPosts', [
-                {
-                  id: "1",
-                  title: "first",
-                  previewText: "this is first",
-                  thumbnail: "http://www.google.com"
-                },
-                {
-                  id: "2",
-                  title: "sec",
-                  previewText: "this is first",
-                  thumbnail: "http://www.google.com"
-                }
-              ]
-            );    
-            resolve();
-          }, 1500);
-        })
+        // return new Promise((resolve, reject) => {
+        //   setTimeout(() => {
+        //     // its created before there is a 'this'
+        //     vueContext.commit('setPosts', [
+        //         {
+        //           id: "1",
+        //           title: "first",
+        //           previewText: "this is first",
+        //           thumbnail: "http://www.google.com"
+        //         },
+        //         {
+        //           id: "2",
+        //           title: "sec",
+        //           previewText: "this is first",
+        //           thumbnail: "http://www.google.com"
+        //         }
+        //       ]
+        //     );    
+        //     resolve();
+        //   }, 1500);
+        // })
+        return axios.get('firebase url/ posts.json',).then(res => {
+          const postArr = [];
+          for (const k in res.data) {
+            postArr.push({...res.data[key], id: key});
+          }
+          vueContext.commit('setPosts', postArr);
+        }).catch(e => context.error(e));
       },
       // vuexContext
       setPosts:({commit}, posts) => commit('setPosts', posts)
