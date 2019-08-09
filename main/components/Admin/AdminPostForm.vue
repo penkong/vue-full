@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent>
+  <form @submit.prevent="onSave">
     <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
 
     <AppControlInput v-model="editedPost.title">Title</AppControlInput>
@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     onSave() {
-      console.log(this.editedPost);
+      this.$emit("submit", this.editedPost);
     },
     onCancel() {
       // nav back

@@ -21,30 +21,53 @@ export default {
   // cant use normal data flow it override it.
   // instead of created , it come by nuxt for first load page in server ssr
   // exec callback when fechdata done
-  asyncData(context, callback) {
-    //cl context >> we take all info from context not route here because when it load there is no app.
-    //asyncData run on sever not on spa
-    setTimeout(() => {
-      // its created before there is a 'this'
-      callback(null, {
-        loadedPost: [
-          {
-            id: "1",
-            title: "first",
-            previewText: "this is first",
-            thumbnail: "http://www.google.com"
-          },
-          {
-            id: "2",
-            title: "sec",
-            previewText: "this is first",
-            thumbnail: "http://www.google.com"
-          }
-        ]
-      });
-    }, 1500);
-  },
-  created() {}
+  //      asyncData(context, callback) {
+  // fetch instead of asyncData
+  // fetch(context) {
+  //   //cl context >> we take all info from context not route here because when it load there is no app.
+  //   //asyncData run on sever not on spa
+  //   // if (context.store.state.loadedPost.length > 0) {
+  //   //   // if we had already fill up store.
+  //   //   return null;
+  //   // }
+  //   return new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       // its created before there is a 'this'
+  //       resolve({
+  //         loadedPost: [
+  //           {
+  //             id: "1",
+  //             title: "first",
+  //             previewText: "this is first",
+  //             thumbnail: "http://www.google.com"
+  //           },
+  //           {
+  //             id: "2",
+  //             title: "sec",
+  //             previewText: "this is first",
+  //             thumbnail: "http://www.google.com"
+  //           }
+  //         ]
+  //       });
+  //     }, 1500);
+  //   })
+  //     .then(data => {
+  //       // fetch cause we dispatch to store
+  //       context.store.commit("setPosts", data.loadedPost);
+  //     })
+  //     .catch(e => {
+  //       context.error(e);
+  //     });
+  // },
+  // after dispatch get data from store
+  computed: {
+    loadedPost() {
+      return this.$store.getters.loadedPost;
+    }
+  }
+  // created() {
+  //   this.$store.dispatch("setPosts", this.loadedPost);
+  // }
 };
 </script>
 

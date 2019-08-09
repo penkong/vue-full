@@ -21,30 +21,34 @@ export default {
   // cant use normal data flow it override it.
   // instead of created , it come by nuxt for first load page in server ssr
   // exec callback when fechdata done
-  asyncData(context, callback) {
-    //cl context >> we take all info from context not route here because when it load there is no app.
-    //asyncData run on sever not on spa
-    setTimeout(() => {
-      // its created before there is a 'this'
-      callback(null, {
-        loadedPost: [
-          {
-            id: "1",
-            title: "first",
-            previewText: "this is first",
-            thumbnail: "http://www.google.com"
-          },
-          {
-            id: "2",
-            title: "sec",
-            previewText: "this is first",
-            thumbnail: "http://www.google.com"
-          }
-        ]
-      });
-    }, 1500);
-  },
-  created() {}
+  // asyncData(context, callback) {
+  //   //cl context >> we take all info from context not route here because when it load there is no app.
+  //   //asyncData run on sever not on spa
+  //   setTimeout(() => {
+  //     // its created before there is a 'this'
+  //     callback(null, {
+  //       loadedPost: [
+  //         {
+  //           id: "1",
+  //           title: "first",
+  //           previewText: "this is first",
+  //           thumbnail: "http://www.google.com"
+  //         },
+  //         {
+  //           id: "2",
+  //           title: "sec",
+  //           previewText: "this is first",
+  //           thumbnail: "http://www.google.com"
+  //         }
+  //       ]
+  //     });
+  //   }, 1500);
+  // },
+  computed() {
+    loadedPosts: () => {
+      return this.$store.getters.loadedPosts;
+    };
+  }
 };
 </script>
 
