@@ -9,7 +9,7 @@ export default {
     console.log(data)
     // return data.params.id == 1;
     return true
-  }
+  },
+  layout: 'users'
 }
 </script>
-

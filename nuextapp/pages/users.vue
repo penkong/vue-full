@@ -21,6 +21,8 @@ export default {
     onLoadUser() {
       this.$router.push(`/users/${this.userId}`)
     }
-  }
+  },
+  // it by nuxt it look out at layout folder and use users layout
+  layout: 'users'
 }
 </script>
