@@ -1,23 +1,15 @@
 <template>
   <div class="home-page">
-    <section class="intro">
-      <h1>Get the Latest tech news</h1>
-    </section>
-    <section class="featured-posts">
-      <PostPreview id="1" thumbnial="link" title="hello" previewText="sth" />
-      <PostPreview id="2" thumbnial="link" title="helld" previewText="sth2" />
-      <PostPreview id="3" thumbnial="link" title="he" previewText="sth3" />
-      <PostPreview id="4" thumbnial="link" title="hell" previewText="sth4" />
-    </section>
+    <PostList />
   </div>
 </template>
 
 <script>
-import PostPreivew from "~/components/PostPreivew.vue";
+import PostList from "~/components/PostList.vue";
 
 export default {
   components: {
-    PostPreivew
+    PostList
   }
 };
 </script>
