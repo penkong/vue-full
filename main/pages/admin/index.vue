@@ -5,7 +5,7 @@
     </section>
     <section class="existing-post">
       <button @click="$router.push('/admin/new-post')">existing-post</button>
-      <PostList />
+      <PostList isAdmin />
     </section>
   </div>
 </template>
@@ -13,8 +13,10 @@
 <script>
 import PostList from "~/components/Posts/PostList";
 export default {
+  layout: "admin",
   components: {
-    PostList
+    PostList,
+    AppButton
   }
 };
 </script>
