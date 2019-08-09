@@ -4,25 +4,20 @@
       <h1>Get the Latest tech news</h1>
     </section>
     <section class="featured-posts">
-      <nuxt-link :to="/posts/ + 1">
-        <article class="post-preview">
-          <div class="post-thumbnial"></div>
-          <div class="post-content">
-            <h1>post title</h1>
-            <p>preview text</p>
-          </div>
-        </article>
-      </nuxt-link>
+      <PostPreview id="1" thumbnial="link" title="hello" previewText="sth" />
+      <PostPreview id="2" thumbnial="link" title="helld" previewText="sth2" />
+      <PostPreview id="3" thumbnial="link" title="he" previewText="sth3" />
+      <PostPreview id="4" thumbnial="link" title="hell" previewText="sth4" />
     </section>
   </div>
 </template>
 
 <script>
-import Logo from "~/components/Logo.vue";
+import PostPreivew from "~/components/PostPreivew.vue";
 
 export default {
   components: {
-    Logo
+    PostPreivew
   }
 };
 </script>
@@ -33,6 +28,7 @@ export default {
   position: relative;
   padding: 30px;
   box-sizing: border-box;
+  /* url('~assets/images/main-page.jpg' */
   background-position: center;
   background-size: cover;
 }
@@ -65,41 +61,5 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-}
-
-.post-preview {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #ccc;
-  background-color: white;
-  width: 90%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-@media (min-width: 850px) {
-  .post-preview {
-    width: 400px;
-    margin: 10px;
-  }
-}
-
-.post-thumbnail {
-  width: 100%;
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-}
-
-.post-content {
-  padding: 10px;
-  text-align: center;
-}
-
-a:hover .post-content,
-a:active .post-content {
-  background-color: #ccc;
 }
 </style>
